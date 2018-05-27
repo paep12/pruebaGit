@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/05/2018 12:39:00 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.drugstore.demo.modelo.Compra" table="compra" schema="public">
+        <id name="idcompra" type="int">
+            <column name="idcompra" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="com.drugstore.demo.modelo.Cliente" fetch="select">
+            <column name="idcliente" not-null="true" />
+        </many-to-one>
+        <property name="producto" type="string">
+            <column name="producto" length="50" />
+        </property>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="cantidad" />
+        </property>
+        <property name="precio" type="java.lang.Integer">
+            <column name="precio" />
+        </property>
+        <set name="compraProductos" table="compra_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcompra" not-null="true" />
+            </key>
+            <one-to-many class="com.drugstore.demo.modelo.CompraProducto" />
+        </set>
+    </class>
+</hibernate-mapping>

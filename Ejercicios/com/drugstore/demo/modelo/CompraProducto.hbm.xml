@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/05/2018 12:39:00 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.drugstore.demo.modelo.CompraProducto" table="compra_producto" schema="public">
+        <id name="idcompraproducto" type="int">
+            <column name="idcompraproducto" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="compra" class="com.drugstore.demo.modelo.Compra" fetch="select">
+            <column name="idcompra" not-null="true" />
+        </many-to-one>
+        <many-to-one name="producto" class="com.drugstore.demo.modelo.Producto" fetch="select">
+            <column name="idproducto" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

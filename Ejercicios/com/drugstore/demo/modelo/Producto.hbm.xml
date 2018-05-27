@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/05/2018 12:39:00 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.drugstore.demo.modelo.Producto" table="producto" schema="public">
+        <id name="idproducto" type="int">
+            <column name="idproducto" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tipoproducto" class="com.drugstore.demo.modelo.Tipoproducto" fetch="select">
+            <column name="idtipoproducto" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" />
+        </property>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="cantidad" />
+        </property>
+        <property name="precio" type="java.lang.Integer">
+            <column name="precio" />
+        </property>
+        <set name="productoVentas" table="producto_venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idproducto" not-null="true" />
+            </key>
+            <one-to-many class="com.drugstore.demo.modelo.ProductoVenta" />
+        </set>
+        <set name="compraProductos" table="compra_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idproducto" not-null="true" />
+            </key>
+            <one-to-many class="com.drugstore.demo.modelo.CompraProducto" />
+        </set>
+    </class>
+</hibernate-mapping>
