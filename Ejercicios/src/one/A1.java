@@ -12,7 +12,7 @@ public class A1 {
 			for (int i = 0; i < arreglo.length; i++) {
 				
 				if (n<arreglo.length) {
-					
+					System.out.println("oli");
 					if (letra.equals(arreglo[i])) {
 						return palabraReturn=(arreglo[i+n]);
 					}
